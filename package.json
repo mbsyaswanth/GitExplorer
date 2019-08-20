@@ -9,7 +9,11 @@
   },
   "dependencies": {
     "react": "16.8.6",
-    "react-native": "0.60.5"
+    "react-native": "0.60.5",
+    "react-native-router-flux": "^4.0.6",
+    "styled-components": "^4.3.2",
+    "mobx": "^5.13.0",
+    "mobx-react": "^6.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
