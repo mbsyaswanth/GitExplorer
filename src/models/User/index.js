@@ -19,6 +19,10 @@ class User {
       new Repo(repo.name, repo.stargazers_count, repo.forks);
     });
   };
+  getRepos = () => {
+    let repoData = this.serviceName.getRepos();
+    this.setRepos(repoData);
+  };
 }
 
 export default User;
