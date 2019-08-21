@@ -21,4 +21,10 @@ describe('user model test cases ', () => {
     user.setRepos();
     expect(user.repos).toHaveLength(1);
   });
+  it('should check for the getRepos functionality', () => {
+    const user = new User(userName, avatarUrl, repoUrl, new UserServices());
+    expect(user.apiStatus).toBe(null);
+    user.getRepos();
+    expect(user.repos).toHaveLength(1);
+  });
 });

@@ -6,6 +6,7 @@ class User {
   repoUrl = '';
   serviceName = null;
   @observable repos = [];
+  @observable apiStatus = null;
   constructor(username, avatarUrl, repoUrl, serviceName) {
     this.userName = username;
     this.avatarUrl = avatarUrl;
