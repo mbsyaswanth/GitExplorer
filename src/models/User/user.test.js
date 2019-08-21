@@ -1,3 +1,5 @@
+import User from '.';
+
 describe('user model test cases ', () => {
   it('should check for the user model functionality', () => {
     const user = new User('username', 'avatarUrl', 'repoUrl');
