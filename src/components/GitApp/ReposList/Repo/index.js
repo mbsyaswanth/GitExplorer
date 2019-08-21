@@ -5,10 +5,10 @@ class Repo extends Component {
   render() {
     return (
       <RepoContainer>
-        <RepoName>Repo</RepoName>
+        <RepoName>Repo Name</RepoName>
         <RepoInfo>
-          <RepoText>stars</RepoText>
-          <RepoText>Forks</RepoText>
+          <RepoText>stars : 10</RepoText>
+          <RepoText>Forks : 5</RepoText>
         </RepoInfo>
       </RepoContainer>
     );

@@ -14,7 +14,7 @@ export const RepoText = styled.Text`
 
 export const RepoName = styled.Text`
   font-weight: bold;
-  font-size: 15;
+  font-size: 18;
 `;
 
 export const RepoInfo = styled.View`
