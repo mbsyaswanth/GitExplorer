@@ -8,12 +8,14 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@babel/plugin-proposal-decorators": "^7.4.4",
+    "@types/jest": "^24.0.18",
+    "mobx": "^5.13.0",
+    "mobx-react": "^6.1.1",
     "react": "16.8.6",
     "react-native": "0.60.5",
     "react-native-router-flux": "^4.0.6",
-    "styled-components": "^4.3.2",
-    "mobx": "^5.13.0",
-    "mobx-react": "^6.1.1"
+    "styled-components": "^4.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
