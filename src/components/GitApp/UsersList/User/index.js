@@ -2,13 +2,11 @@ import React, {Component} from 'react';
 import {Text, View, Image, TouchableNativeFeedback} from 'react-native';
 import {UserContainer, UserText, Avatar} from './styledComponents';
 import {Actions, ActionConst} from 'react-native-router-flux';
-
+import {goToRepos} from '../../../../utils';
 class User extends Component {
   render() {
     return (
-      <TouchableNativeFeedback
-        data-testid="user"
-        onPress={() => Actions.repos()}>
+      <TouchableNativeFeedback data-testid="user" onPress={() => goToRepos()}>
         <UserContainer>
           <Avatar
             source={{
