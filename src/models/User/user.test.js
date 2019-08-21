@@ -18,7 +18,7 @@ describe('user model test cases ', () => {
   it('should check for the setRepos functionality', () => {
     const user = new User(userName, avatarUrl, repoUrl, new UserServices());
     expect(user.repos).toHaveLength(0);
-    user.setRepos();
+    user.setRepos(new UserServices().getRepos());
     expect(user.repos).toHaveLength(1);
   });
   it('should check for the getRepos functionality', () => {

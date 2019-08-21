@@ -13,8 +13,7 @@ class User {
     this.repoUrl = repoUrl;
     this.serviceName = serviceName;
   }
-  setRepos = () => {
-    let repoData = this.serviceName.getRepos();
+  setRepos = repoData => {
     this.repos = repoData.map(repo => {
       new Repo(repo.name, repo.stargazers_count, repo.forks);
     });
