@@ -1,5 +1,5 @@
 import {observable} from 'mobx';
-
+import Repo from '../Repo/index';
 class User {
   userName = '';
   avatarUrl = '';
@@ -13,7 +13,10 @@ class User {
     this.serviceName = serviceName;
   }
   setRepos = () => {
-    this.repos = [...this.repos, this.serviceName.getRepos()];
+    let repoData = this.serviceName.getRepos();
+    this.repos = repoData.map(repo => {
+      new Repo(repo.name, repo.stargazers_count, repo.forks);
+    });
   };
 }
 

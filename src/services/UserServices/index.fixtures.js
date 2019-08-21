@@ -1,7 +1,7 @@
 import repos from '../../fixtures/repos.json';
 class UserServices {
   getRepos = () => {
-    return Promise.resolve(repos);
+    return repos;
   };
 }
 export default UserServices;
