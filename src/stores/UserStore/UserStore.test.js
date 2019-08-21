@@ -8,4 +8,10 @@ describe('User store test cases', () => {
     store.setUsers(services.getUsers());
     expect(store.users).toHaveLength(2);
   });
+  it('should check for the getUsers functionality', () => {
+    const store = new UserStore();
+    expect(store.users).toHaveLength(0);
+    store.getUsers();
+    expect(store.users).toHaveLength(2);
+  });
 });
