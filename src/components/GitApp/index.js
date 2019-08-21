@@ -16,7 +16,7 @@ class GitApp extends Component {
             component={SplashScreen}
           />
           <Scene title="Git Users" key="users" component={UserList} />
-          <Scene key="Repos" component={ReposList} />
+          <Scene title="Repositories" key="repos" component={ReposList} />
         </Scene>
       </Router>
     );

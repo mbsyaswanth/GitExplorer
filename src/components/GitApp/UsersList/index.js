@@ -5,7 +5,7 @@ class UserList extends Component {
   render() {
     return (
       <View>
-        <Text> textInComponent </Text>
+        <Text> User List </Text>
         <User />
       </View>
     );
