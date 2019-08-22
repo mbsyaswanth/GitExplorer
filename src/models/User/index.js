@@ -1,13 +1,14 @@
 import {observable} from 'mobx';
 import Repo from '../Repo/index';
-import UserServices from '../../services/UserServices/index.fixtures';
+import UserServices from '../../services/UserServices/index.api';
+import {apiStatus} from '../../constants';
 class User {
   userName = '';
   avatarUrl = '';
   repoUrl = '';
   serviceName = null;
   @observable repos = [];
-  @observable apiStatus = null;
+  @observable apiState = null;
   constructor(username, avatarUrl, repoUrl, serviceName = new UserServices()) {
     this.userName = username;
     this.avatarUrl = avatarUrl;
@@ -19,9 +20,16 @@ class User {
       new Repo(repo.name, repo.stargazers_count, repo.forks);
     });
   };
-  getRepos = () => {
-    let repoData = this.serviceName.getRepos();
-    this.setRepos(repoData);
+  getRepos = async () => {
+    this.apiState = apiStatus.loading;
+    try {
+      let response = await this.serviceName.getRepos(this.repoUrl);
+      let reposData = await response.json();
+      this.setRepos(reposData);
+      this.apiState = apiStatus.completed;
+    } catch (e) {
+      this.apiState = apiStatus.error;
+    }
   };
 }
 
