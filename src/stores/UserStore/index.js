@@ -1,11 +1,13 @@
 import {observable, action} from 'mobx';
 import User from '../models/User';
 import {apiStatus} from '../../constants/ApiStatus';
+import {setLocale} from '../../utils/language.utils';
 
 class UserStore {
   @observable users = [];
   @observable apiStatus = '';
   @observable errorMessage = '';
+  @observable selectedLanguageName = 'en';
 
   constructor(services) {
     this.services = services;
@@ -41,6 +43,11 @@ class UserStore {
 
   @action.bound setErrorMessage(message) {
     this.errorMessage = message;
+  }
+
+  @action.bound setLanguageName(languageName) {
+    this.selectedLanguageName = languageName;
+    setLocale(this.selectedLanguageName);
   }
 }
 

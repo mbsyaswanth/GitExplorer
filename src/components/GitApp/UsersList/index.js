@@ -52,13 +52,6 @@ class UserList extends Component {
   render() {
     return (
       <Container>
-        <Language
-          selectedValue={this.state.language}
-          onValueChange={itemValue => this.setState({language: itemValue})}>
-          <Language.Item label="English" value="en" />
-          <Language.Item label="తెలుగు" value="tel" />
-          <Language.Item label="हिंदी" value="hin" />
-        </Language>
         {this.renderError()}
         {this.isLoading() ? this.renderLoading() : this.renderUsers()}
       </Container>

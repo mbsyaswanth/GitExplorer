@@ -6,4 +6,6 @@ export default {
   git_Explorer: 'Git Explorer',
   user_List: 'User List',
   user: 'User',
+  git_Users: 'Git Users',
+  repositories: 'Repositories',
 };

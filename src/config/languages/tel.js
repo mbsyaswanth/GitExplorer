@@ -6,4 +6,6 @@ export default {
   git_Explorer: 'Git ఎక్స్ప్లోరర్',
   user_List: 'వినియోగదారు జాబితా',
   user: 'వాడుకరి',
+  git_Users: 'Git వినియోగదారులు',
+  repositories: 'సురక్షిత కేంద్రాలు',
 };
