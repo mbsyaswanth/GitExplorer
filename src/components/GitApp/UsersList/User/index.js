@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import {Text, View, Image, TouchableNativeFeedback} from 'react-native';
+import {TouchableNativeFeedback} from 'react-native';
 import {UserContainer, UserText, Avatar} from './styledComponents';
-import {Actions, ActionConst} from 'react-native-router-flux';
 import {goToRepos} from '../../../../utils';
+import translate from '../../../../utils/language.utils';
 class User extends Component {
   render() {
     return (
@@ -13,7 +13,7 @@ class User extends Component {
               uri: 'https://facebook.github.io/react-native/img/tiny_logo.png',
             }}
           />
-          <UserText> User </UserText>
+          <UserText> {translate('user')} </UserText>
         </UserContainer>
       </TouchableNativeFeedback>
     );

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import {Actions, ActionConst} from 'react-native-router-flux';
 import {Container, Logo} from './styledComponents';
+import translate from '../../../utils/language.utils';
 
 class SplashScreen extends Component {
   componentDidMount() {
@@ -13,7 +14,7 @@ class SplashScreen extends Component {
   render() {
     return (
       <Container>
-        <Logo> Git Explorer </Logo>
+        <Logo> {translate('git_Explorer')} </Logo>
       </Container>
     );
   }

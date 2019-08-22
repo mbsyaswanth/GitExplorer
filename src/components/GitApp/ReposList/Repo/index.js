@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
 import {RepoContainer, RepoText, RepoName, RepoInfo} from './styledComponents';
+import translate from '../../../../utils/language.utils';
 class Repo extends Component {
   render() {
     return (
       <RepoContainer>
-        <RepoName>Repo Name</RepoName>
+        <RepoName>{translate('repo_Name')}</RepoName>
         <RepoInfo>
-          <RepoText>stars : 10</RepoText>
-          <RepoText>Forks : 5</RepoText>
+          <RepoText>{translate('stars')} : 10</RepoText>
+          <RepoText>{translate('forks')} : 5</RepoText>
         </RepoInfo>
       </RepoContainer>
     );
