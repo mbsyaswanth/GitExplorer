@@ -8,12 +8,14 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@babel/plugin-proposal-decorators": "^7.4.4",
+    "mobx": "^5.13.0",
+    "mobx-react": "^6.1.1",
     "react": "16.8.6",
     "react-native": "0.60.5",
+    "react-native-i18n": "^2.0.15",
     "react-native-router-flux": "^4.0.6",
-    "styled-components": "^4.3.2",
-    "mobx": "^5.13.0",
-    "mobx-react": "^6.1.1"
+    "styled-components": "^4.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
@@ -23,6 +25,7 @@
     "eslint": "^6.2.1",
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.56.0",
+    "react-native-testing-library": "^1.11.1",
     "react-test-renderer": "16.8.6"
   },
   "jest": {
