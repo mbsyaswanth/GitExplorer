@@ -8,3 +8,5 @@ class UserServices {
     return fetch(url);
   };
 }
+
+export default UserServices;
