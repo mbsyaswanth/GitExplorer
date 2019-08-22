@@ -6,6 +6,7 @@ import ReposList from './ReposList';
 import SplashScreen from './SplashScreen';
 import UserStore from '../../stores/UserStore';
 import UserServices from '../../services/UserServices/index.api';
+import LanguageSelect from './LanguageSelect';
 
 const Store = new UserStore(new UserServices());
 
@@ -25,6 +26,7 @@ class GitApp extends Component {
             title="Git Users"
             key="users"
             component={UserList}
+            renderRightButton={<LanguageSelect store={Store} />}
           />
           <Scene title="Repositories" key="repos" component={ReposList} />
         </Scene>
