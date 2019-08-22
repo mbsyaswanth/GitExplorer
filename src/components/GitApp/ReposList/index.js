@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, ActivityIndicator, FlatList} from 'react-native';
+import {Text, ActivityIndicator, FlatList} from 'react-native';
 import Repo from './Repo';
 import {apiStatus as ApiStatus} from '../../../constants/ApiStatus';
 import {observer} from 'mobx-react';
@@ -46,8 +46,18 @@ class ReposList extends Component {
     );
   };
 
+  renderError = () => {
+    const {apiStatus, errorMessage} = this.props.user;
+    if (apiStatus === ApiStatus.error) return <Text>{errorMessage}</Text>;
+  };
+
   render() {
-    return <>{this.isLoading() ? this.renderLoading() : this.renderRepos()}</>;
+    return (
+      <>
+        {this.renderError()}
+        {this.isLoading() ? this.renderLoading() : this.renderRepos()}
+      </>
+    );
   }
 }
 

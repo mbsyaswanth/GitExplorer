@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {ActivityIndicator, FlatList} from 'react-native';
+import {ActivityIndicator, FlatList, Text} from 'react-native';
 import User from './User';
 import {Container, Language} from './styledComponents';
 import {apiStatus as ApiStatus} from '../../../constants/ApiStatus';
@@ -40,6 +40,15 @@ class UserList extends Component {
     return <ActivityIndicator size="large" color="#0000ff" />;
   };
 
+  renderError = () => {
+    const {errorMessage, apiStatus} = this.props.store;
+    if (apiStatus === ApiStatus.error) {
+      return <Text>{errorMessage}</Text>;
+    } else {
+      return null;
+    }
+  };
+
   render() {
     return (
       <Container>
@@ -50,6 +59,7 @@ class UserList extends Component {
           <Language.Item label="తెలుగు" value="tel" />
           <Language.Item label="हिंदी" value="hin" />
         </Language>
+        {this.renderError()}
         {this.isLoading() ? this.renderLoading() : this.renderUsers()}
       </Container>
     );
