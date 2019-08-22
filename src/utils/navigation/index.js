@@ -1,7 +1,9 @@
 import {Actions, ActionConst} from 'react-native-router-flux';
 
 export const goToRepos = user => {
-  Actions.repos({user: user});
+  if (Actions.currentScene !== 'repos') {
+    Actions.repos({user: user, title: user.userName + ' Repositories'});
+  }
 };
 
 export const goToUsers = () => {
