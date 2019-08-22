@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Text, View, ActivityIndicator} from 'react-native';
 import Repo from './Repo';
 import {apiStatus as ApiStatus} from '../../../constants/ApiStatus';
+import {observer} from 'mobx-react';
+@observer
 class ReposList extends Component {
   componentWillMount() {
     const {getRepos} = this.props.user;
@@ -40,7 +42,9 @@ class ReposList extends Component {
 
   render() {
     return (
-      <View>{this.isLoading ? this.renderLoading() : this.renderRepos()}</View>
+      <View>
+        {this.isLoading() ? this.renderLoading() : this.renderRepos()}
+      </View>
     );
   }
 }

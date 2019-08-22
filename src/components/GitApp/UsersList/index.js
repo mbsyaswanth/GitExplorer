@@ -4,7 +4,9 @@ import User from './User';
 import translate from '../../../utils/language.utils';
 import {Container, Language} from './styledComponents';
 import {apiStatus as ApiStatus} from '../../../constants/ApiStatus';
+import {observer} from 'mobx-react';
 
+@observer
 class UserList extends Component {
   constructor(props) {
     super(props);
@@ -48,7 +50,7 @@ class UserList extends Component {
           <Language.Item label="తెలుగు" value="tel" />
           <Language.Item label="हिंदी" value="hin" />
         </Language>
-        {this.isLoading ? this.renderLoading() : this.renderUsers()}
+        {this.isLoading() ? this.renderLoading() : this.renderUsers()}
       </Container>
     );
   }

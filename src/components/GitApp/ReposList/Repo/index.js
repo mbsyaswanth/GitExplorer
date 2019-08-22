@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {RepoContainer, RepoText, RepoName, RepoInfo} from './styledComponents';
 import translate from '../../../../utils/language.utils';
+import {observer} from 'mobx-react';
+@observer
 class Repo extends Component {
   render() {
     const {repoName, stars, forks} = this.props.repo;

@@ -20,15 +20,15 @@ class UserStore {
         this.services,
       );
     });
+    this.setApiStatus(apiStatus.completed);
   }
 
   @action.bound async getUsers() {
-    this.apiStatus = apiStatus.loading;
     try {
+      this.setApiStatus(apiStatus.loading);
       const response = await this.services.getUsers();
       const usersData = await response.json();
       this.setUsers(usersData);
-      this.setApiStatus(apiStatus.completed);
     } catch (e) {
       this.setApiStatus(apiStatus.error);
       this.setErrorMessage('something went wrong');
