@@ -13,6 +13,7 @@
     "mobx-react": "^6.1.1",
     "react": "16.8.6",
     "react-native": "0.60.5",
+    "react-native-i18n": "^2.0.15",
     "react-native-router-flux": "^4.0.6",
     "styled-components": "^4.3.2"
   },

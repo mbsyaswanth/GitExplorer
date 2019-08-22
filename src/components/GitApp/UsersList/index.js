@@ -12,8 +12,6 @@ class UserList extends Component {
 
   render() {
     return (
-      <View>
-        <Text> {translate('user_List')} </Text>
       <Container>
         <Language
           selectedValue={this.state.language}
@@ -24,8 +22,7 @@ class UserList extends Component {
           <Language.Item label="తెలుగు" value="tel" />
           <Language.Item label="हिंदी" value="hin" />
         </Language>
-        <Text> User List </Text>
-
+        <Text> {translate('user_List')} </Text>
         <User />
       </Container>
     );
