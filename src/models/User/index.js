@@ -1,5 +1,6 @@
 import {observable} from 'mobx';
 import Repo from '../Repo/index';
+import UserServices from '../../services/UserServices/index.fixtures';
 class User {
   userName = '';
   avatarUrl = '';
@@ -7,7 +8,7 @@ class User {
   serviceName = null;
   @observable repos = [];
   @observable apiStatus = null;
-  constructor(username, avatarUrl, repoUrl, serviceName) {
+  constructor(username, avatarUrl, repoUrl, serviceName = new UserServices()) {
     this.userName = username;
     this.avatarUrl = avatarUrl;
     this.repoUrl = repoUrl;
