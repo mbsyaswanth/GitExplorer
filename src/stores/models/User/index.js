@@ -18,7 +18,7 @@ class User {
   }
   @action.bound setRepos(repoData) {
     this.repos = repoData.map(repo => {
-      new Repo(repo.name, repo.stargazers_count, repo.forks);
+      return new Repo(repo.name, repo.stargazers_count, repo.forks);
     });
   }
   @action.bound async getRepos() {

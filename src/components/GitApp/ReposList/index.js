@@ -6,8 +6,10 @@ import {observer} from 'mobx-react';
 @observer
 class ReposList extends Component {
   componentWillMount() {
-    const {getRepos} = this.props.user;
+    const {getRepos, repoUrl} = this.props.user;
+    console.log(this.props.user);
     if (this.isReposEmpty()) {
+      console.log('inside repo');
       getRepos();
     }
   }
@@ -36,16 +38,16 @@ class ReposList extends Component {
   renderRepos = () => {
     const {repos} = this.props.user;
     return (
-      <FlatList data={repos} renderItem={({repo}) => <Repo repo={repo} />} />
+      <FlatList
+        data={repos}
+        keyExtractor={() => Date.now()}
+        renderItem={({item}) => <Repo repo={item} />}
+      />
     );
   };
 
   render() {
-    return (
-      <View>
-        {this.isLoading() ? this.renderLoading() : this.renderRepos()}
-      </View>
-    );
+    return <>{this.isLoading() ? this.renderLoading() : this.renderRepos()}</>;
   }
 }
 

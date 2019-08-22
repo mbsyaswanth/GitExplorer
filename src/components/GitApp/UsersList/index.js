@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {ActivityIndicator, FlatList} from 'react-native';
 import User from './User';
-import translate from '../../../utils/language.utils';
 import {Container, Language} from './styledComponents';
 import {apiStatus as ApiStatus} from '../../../constants/ApiStatus';
 import {observer} from 'mobx-react';
@@ -30,7 +29,10 @@ class UserList extends Component {
   renderUsers = () => {
     const {users} = this.props.store;
     return (
-      <FlatList data={users} renderItem={({user}) => <User user={user} />} />
+      <FlatList
+        data={this.props.store.users}
+        renderItem={({item}) => <User user={item} />}
+      />
     );
   };
 
@@ -43,9 +45,7 @@ class UserList extends Component {
       <Container>
         <Language
           selectedValue={this.state.language}
-          onValueChange={(itemValue, itemIndex) =>
-            this.setState({language: itemValue})
-          }>
+          onValueChange={itemValue => this.setState({language: itemValue})}>
           <Language.Item label="English" value="en" />
           <Language.Item label="తెలుగు" value="tel" />
           <Language.Item label="हिंदी" value="hin" />
