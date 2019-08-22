@@ -1,27 +1,41 @@
 import {observable, action} from 'mobx';
 import User from '../../models/User';
 import {apiStatus} from '../../constants';
-import UserServices from '../../services/UserServices/index.api';
 
 class UserStore {
   @observable users = [];
   @observable apiStatus = '';
+  @observable errorMessage = '';
+
+  constructor(services) {
+    this.services = services;
+  }
+
   @action.bound setUsers(userData) {
     this.users = userData.map(user => {
-      new User(user.login, user.avatar_url, user.repos_url);
+      new User(user.login, user.avatar_url, user.repos_url, this.services);
     });
   }
+
   @action.bound async getUsers() {
     this.apiStatus = apiStatus.loading;
     try {
-      const services = new UserServices();
-      const response = await services.getUsers();
+      const response = await this.services.getUsers();
       const usersData = await response.json();
       this.setUsers(usersData);
-      this.apiStatus = apiStatus.completed;
+      this.setApiStatus(apiStatus.completed);
     } catch (e) {
-      this.apiStatus = apiStatus.error;
+      this.setApiStatus(apiStatus.error);
+      this.setErrorMessage('something went wrong');
     }
+  }
+
+  @action.bound setApiStatus(status) {
+    this.apiStatus = status;
+  }
+
+  @action.bound setErrorMessage(message) {
+    this.errorMessage = message;
   }
 }
 
