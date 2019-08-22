@@ -4,7 +4,7 @@ import {Image} from 'react-native';
 export const RepoContainer = styled.View`
   padding: 10px;
   align-items: center;
-  background-color: #f8f8ff;
+  background-color: #fffafa;
   box-shadow: 10px 5px 5px white;
   margin-bottom: 5px;
 `;
