@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, ActivityIndicator} from 'react-native';
+import {ActivityIndicator, FlatList} from 'react-native';
 import User from './User';
 import translate from '../../../utils/language.utils';
 import {Container, Language} from './styledComponents';
@@ -29,9 +29,9 @@ class UserList extends Component {
 
   renderUsers = () => {
     const {users} = this.props.store;
-    return users.map(user => {
-      return <User user={user} />;
-    });
+    return (
+      <FlatList data={users} renderItem={({user}) => <User user={user} />} />
+    );
   };
 
   renderLoading = () => {

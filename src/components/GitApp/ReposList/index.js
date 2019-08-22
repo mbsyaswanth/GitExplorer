@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, ActivityIndicator} from 'react-native';
+import {View, ActivityIndicator, FlatList} from 'react-native';
 import Repo from './Repo';
 import {apiStatus as ApiStatus} from '../../../constants/ApiStatus';
 import {observer} from 'mobx-react';
@@ -35,9 +35,9 @@ class ReposList extends Component {
 
   renderRepos = () => {
     const {repos} = this.props.user;
-    return repos.map(repo => {
-      return <Repo repo={repo} />;
-    });
+    return (
+      <FlatList data={repos} renderItem={({repo}) => <Repo repo={repo} />} />
+    );
   };
 
   render() {
