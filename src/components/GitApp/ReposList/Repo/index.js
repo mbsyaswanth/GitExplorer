@@ -3,12 +3,17 @@ import {RepoContainer, RepoText, RepoName, RepoInfo} from './styledComponents';
 import translate from '../../../../utils/language.utils';
 class Repo extends Component {
   render() {
+    const {repoName, stars, forks} = this.props.repo;
     return (
       <RepoContainer>
-        <RepoName>{translate('repo_Name')}</RepoName>
+        <RepoName>{repoName}</RepoName>
         <RepoInfo>
-          <RepoText>{translate('stars')} : 10</RepoText>
-          <RepoText>{translate('forks')} : 5</RepoText>
+          <RepoText>
+            {translate('stars')} : {stars}
+          </RepoText>
+          <RepoText>
+            {translate('forks')} : {forks}
+          </RepoText>
         </RepoInfo>
       </RepoContainer>
     );
