@@ -1,4 +1,4 @@
-import {usersUrl} from './../../constants';
+import {usersUrl} from '../../constants/Url';
 
 class UserServices {
   getUsers = () => {
