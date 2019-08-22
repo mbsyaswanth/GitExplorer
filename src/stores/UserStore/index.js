@@ -1,5 +1,5 @@
 import {observable, action} from 'mobx';
-import User from '../../models/User';
+import User from '../models/User';
 import {apiStatus} from '../../constants';
 
 class UserStore {
