@@ -2,18 +2,20 @@ import React, {Component} from 'react';
 import {TouchableNativeFeedback} from 'react-native';
 import {UserContainer, UserText, Avatar} from './styledComponents';
 import {goToRepos} from '../../../../utils/navigation';
-import translate from '../../../../utils/language.utils';
 class User extends Component {
   render() {
+    const {userName, avatarUrl} = this.props.user;
     return (
-      <TouchableNativeFeedback data-testid="user" onPress={() => goToRepos()}>
+      <TouchableNativeFeedback
+        data-testid="user"
+        onPress={() => goToRepos(this.props.user)}>
         <UserContainer>
           <Avatar
             source={{
-              uri: 'https://facebook.github.io/react-native/img/tiny_logo.png',
+              uri: avatarUrl,
             }}
           />
-          <UserText> {translate('user')} </UserText>
+          <UserText> {userName} </UserText>
         </UserContainer>
       </TouchableNativeFeedback>
     );

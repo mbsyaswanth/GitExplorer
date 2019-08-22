@@ -4,6 +4,11 @@ import {Scene, Router} from 'react-native-router-flux';
 import UserList from './UsersList';
 import ReposList from './ReposList';
 import SplashScreen from './SplashScreen';
+import UserStore from '../../stores/UserStore';
+import UserServices from '../../services/UserServices/index.api';
+
+const Store = new UserStore(new UserServices());
+
 class GitApp extends Component {
   render() {
     return (
@@ -15,7 +20,12 @@ class GitApp extends Component {
             initial
             component={SplashScreen}
           />
-          <Scene title="Git Users" key="users" component={UserList} />
+          <Scene
+            store={Store}
+            title="Git Users"
+            key="users"
+            component={UserList}
+          />
           <Scene title="Repositories" key="repos" component={ReposList} />
         </Scene>
       </Router>

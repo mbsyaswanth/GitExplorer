@@ -1,7 +1,7 @@
 import {Actions, ActionConst} from 'react-native-router-flux';
 
-export const goToRepos = () => {
-  Actions.repos();
+export const goToRepos = user => {
+  Actions.repos({user: user});
 };
 
 export const goToUsers = () => {
