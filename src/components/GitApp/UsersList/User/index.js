@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {TouchableNativeFeedback} from 'react-native';
 import {UserContainer, UserText, Avatar} from './styledComponents';
-import {goToRepos} from '../../../../utils';
+import {goToRepos} from '../../../../utils/navigation';
 import translate from '../../../../utils/language.utils';
 class User extends Component {
   render() {

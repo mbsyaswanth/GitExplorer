@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 
-import {Actions, ActionConst} from 'react-native-router-flux';
 import {Container, Logo} from './styledComponents';
 import translate from '../../../utils/language.utils';
+import {goToUsers} from '../../../utils/navigation';
 
 class SplashScreen extends Component {
   componentDidMount() {
     setTimeout(() => {
-      Actions.users({type: ActionConst.REPLACE});
+      goToUsers();
     }, 1500);
   }
 
