@@ -6,6 +6,7 @@ export const RepoContainer = styled.View`
   align-items: center;
   background-color: #f8f8ff;
   box-shadow: 10px 5px 5px white;
+  margin-bottom: 5px;
 `;
 
 export const RepoText = styled.Text`
