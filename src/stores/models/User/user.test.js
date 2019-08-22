@@ -1,5 +1,6 @@
 import User from '.';
-import UserServices from '../../services/UserServices/index.fixtures';
+import UserServices from '../../../services/UserServices/index.fixtures';
+
 describe('user model test cases ', () => {
   let userName;
   let avatarUrl;

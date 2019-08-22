@@ -1,6 +1,6 @@
 import {observable, action} from 'mobx';
 import User from '../models/User';
-import {apiStatus} from '../../constants';
+import {apiStatus} from '../../constants/ApiStatus';
 
 class UserStore {
   @observable users = [];
@@ -13,7 +13,12 @@ class UserStore {
 
   @action.bound setUsers(userData) {
     this.users = userData.map(user => {
-      new User(user.login, user.avatar_url, user.repos_url, this.services);
+      return new User(
+        user.login,
+        user.avatar_url,
+        user.repos_url,
+        this.services,
+      );
     });
   }
 

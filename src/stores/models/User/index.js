@@ -1,7 +1,7 @@
 import {observable, action} from 'mobx';
 import Repo from '../Repo/index';
 
-import {apiStatus} from '../../constants';
+import {apiStatus} from '../../../constants/ApiStatus';
 class User {
   userName = '';
   avatarUrl = '';
