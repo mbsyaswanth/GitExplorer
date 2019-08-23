@@ -6,7 +6,7 @@
  * @flow
  */
 
-import React, {Fragment} from 'react';
+import React from 'react';
 
 import GitApp from './src/components/GitApp';
 import UserStore from './src/stores/UserStore';

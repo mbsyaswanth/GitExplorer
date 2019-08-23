@@ -1,7 +1,17 @@
 import React, {Component} from 'react';
-import {RepoContainer, RepoText, RepoName, RepoInfo} from './styledComponents';
-import translate from '../../../../utils/language.utils';
 import {observer} from 'mobx-react';
+
+import {
+  RepoContainer,
+  RepoText,
+  RepoName,
+  RepoInfoContainer,
+  RepoInfoBtn,
+  IconImage,
+} from './styledComponents';
+
+import translate from '../../../../utils/language.utils';
+
 @observer
 class Repo extends Component {
   render() {
@@ -9,14 +19,20 @@ class Repo extends Component {
     return (
       <RepoContainer>
         <RepoName>{repoName}</RepoName>
-        <RepoInfo>
-          <RepoText>
-            {translate('stars')} : {stars}
-          </RepoText>
-          <RepoText>
-            {translate('forks')} : {forks}
-          </RepoText>
-        </RepoInfo>
+        <RepoInfoContainer>
+          <RepoInfoBtn>
+            <IconImage source={require('../../../../assets/images/star.png')} />
+            <RepoText>
+              {translate('stars')} : {stars}
+            </RepoText>
+          </RepoInfoBtn>
+          <RepoInfoBtn>
+            <IconImage source={require('../../../../assets/images/fork.png')} />
+            <RepoText>
+              {translate('forks')} : {forks}
+            </RepoText>
+          </RepoInfoBtn>
+        </RepoInfoContainer>
       </RepoContainer>
     );
   }

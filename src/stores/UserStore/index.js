@@ -1,7 +1,10 @@
 import {observable, action} from 'mobx';
+
 import User from '../models/User';
+
 import {apiStatus} from '../../constants/ApiStatus';
 import {setLocale} from '../../utils/language.utils';
+import {ErrorMessage} from '../../constants/Errors';
 
 class UserStore {
   @observable users = [];
@@ -25,15 +28,24 @@ class UserStore {
     this.setApiStatus(apiStatus.completed);
   }
 
+  isUsersEmpty = () => {
+    if (this.users.length === 0) {
+      return true;
+    }
+    return false;
+  };
+
   @action.bound async getUsers() {
     try {
-      this.setApiStatus(apiStatus.loading);
-      const response = await this.services.getUsers();
-      const usersData = await response.json();
-      this.setUsers(usersData);
+      if (this.isUsersEmpty()) {
+        this.setApiStatus(apiStatus.loading);
+        const response = await this.services.getUsers();
+        const usersData = await response.json();
+        this.setUsers(usersData);
+      }
     } catch (e) {
       this.setApiStatus(apiStatus.error);
-      this.setErrorMessage('something went wrong');
+      this.setErrorMessage(ErrorMessage);
     }
   }
 

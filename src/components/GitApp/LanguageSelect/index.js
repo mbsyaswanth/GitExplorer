@@ -1,10 +1,18 @@
 import React, {Component} from 'react';
+import {observer} from 'mobx-react';
+import {Actions} from 'react-native-router-flux';
 
 import {Language} from './styledComponents';
-import {observer} from 'mobx-react';
+
+import translate from '../../../utils/language.utils';
+import {refreshUserScene} from '../../../utils/navigation';
 
 @observer
 class LanguageSelect extends Component {
+  componentDidUpdate() {
+    refreshUserScene();
+  }
+
   render() {
     const {selectedLanguageName, setLanguageName} = this.props.store;
     return (

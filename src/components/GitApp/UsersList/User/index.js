@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
-import {TouchableNativeFeedback} from 'react-native';
-import {UserContainer, UserText, Avatar} from './styledComponents';
-import {goToRepos} from '../../../../utils/navigation';
 import {observer} from 'mobx-react';
+import {TouchableNativeFeedback} from 'react-native';
+
+import {UserContainer, UserText, Avatar} from './styledComponents';
+
+import {goToRepos} from '../../../../utils/navigation';
+
 @observer
 class User extends Component {
   render() {
