@@ -4,6 +4,8 @@ import User from './User';
 import {Container, Language} from './styledComponents';
 import {apiStatus as ApiStatus} from '../../../constants/ApiStatus';
 import {observer} from 'mobx-react';
+import {Actions} from 'react-native-router-flux';
+import translate from '../../../utils/language.utils';
 
 @observer
 class UserList extends Component {
@@ -15,6 +17,7 @@ class UserList extends Component {
   componentWillMount() {
     const {getUsers} = this.props.store;
     getUsers();
+    Actions.refresh({key: 'users', title: translate('git_Users')});
   }
 
   isLoading = () => {

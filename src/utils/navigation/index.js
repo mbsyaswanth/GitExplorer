@@ -5,11 +5,11 @@ export const goToRepos = user => {
   if (Actions.currentScene !== 'repos') {
     Actions.repos({
       user: user,
-      title: user.userName + translate('repositories'),
+      title: user.userName + ' ' + translate('repositories'),
     });
   }
 };
 
 export const goToUsers = () => {
-  Actions.users({type: ActionConst.REPLACE});
+  Actions.users({type: ActionConst.REPLACE, title: translate('git_Users')});
 };

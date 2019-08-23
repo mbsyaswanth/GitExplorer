@@ -29,11 +29,7 @@ class GitApp extends Component {
             component={UserList}
             renderRightButton={<LanguageSelect store={this.props.store} />}
           />
-          <Scene
-            title={translate('repositories')}
-            key="repos"
-            component={ReposList}
-          />
+          <Scene key="repos" component={ReposList} />
         </Scene>
       </Router>
     );
