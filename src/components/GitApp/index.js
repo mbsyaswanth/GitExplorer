@@ -10,7 +10,6 @@ import LanguageSelect from './LanguageSelect';
 import translate from '../../utils/language.utils';
 import {observer} from 'mobx-react';
 
-@observer
 class GitApp extends Component {
   render() {
     return (
