@@ -1,15 +1,18 @@
 import React, {Component} from 'react';
 import {Text, ActivityIndicator, FlatList} from 'react-native';
-import Repo from './Repo';
-import {apiStatus as ApiStatus} from '../../../constants/ApiStatus';
 import {observer} from 'mobx-react';
+
+import {Center} from './styledComponents';
+import Repo from './Repo';
+
+import {apiStatus as ApiStatus} from '../../../constants/ApiStatus';
+import translate from '../../../utils/language.utils';
+
 @observer
 class ReposList extends Component {
   componentWillMount() {
-    const {getRepos, repoUrl} = this.props.user;
-    console.log(this.props.user);
+    const {getRepos} = this.props.user;
     if (this.isReposEmpty()) {
-      console.log('inside repo');
       getRepos();
     }
   }
@@ -32,15 +35,30 @@ class ReposList extends Component {
   };
 
   renderLoading = () => {
-    return <ActivityIndicator size="large" color="#0000ff" />;
+    return (
+      <Center>
+        <ActivityIndicator size="large" color="#0000ff" />
+      </Center>
+    );
+  };
+
+  renderEmpty = () => {
+    const {apiStatus} = this.props.user;
+    if (apiStatus === ApiStatus.completed) {
+      return (
+        <Center>
+          <Text> {translate('no_repos_msg')} </Text>
+        </Center>
+      );
+    }
   };
 
   renderRepos = () => {
     const {repos} = this.props.user;
     return (
       <FlatList
+        keyExtractor={item => item.repoName}
         data={repos}
-        keyExtractor={() => Date.now()}
         renderItem={({item}) => <Repo repo={item} />}
       />
     );
@@ -48,12 +66,19 @@ class ReposList extends Component {
 
   renderError = () => {
     const {apiStatus, errorMessage} = this.props.user;
-    if (apiStatus === ApiStatus.error) return <Text>{errorMessage}</Text>;
+    if (apiStatus === ApiStatus.error) {
+      return (
+        <Center>
+          <Text>{errorMessage}</Text>
+        </Center>
+      );
+    }
   };
 
   render() {
     return (
       <>
+        {this.renderEmpty()}
         {this.renderError()}
         {this.isLoading() ? this.renderLoading() : this.renderRepos()}
       </>

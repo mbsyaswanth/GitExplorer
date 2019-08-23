@@ -1,7 +1,9 @@
 import {observable, action} from 'mobx';
+
 import Repo from '../Repo/index';
 
 import {apiStatus} from '../../../constants/ApiStatus';
+
 class User {
   userName = '';
   avatarUrl = '';
@@ -9,6 +11,7 @@ class User {
   serviceName = null;
   @observable repos = [];
   @observable apiStatus = null;
+
   constructor(username, avatarUrl, repoUrl, serviceName) {
     this.userName = username;
     this.avatarUrl = avatarUrl;
@@ -16,11 +19,13 @@ class User {
     this.serviceName = serviceName;
     this.errorMessage = '';
   }
+
   @action.bound setRepos(repoData) {
     this.repos = repoData.map(repo => {
       return new Repo(repo.name, repo.stargazers_count, repo.forks);
     });
   }
+
   @action.bound async getRepos() {
     this.setApiStatus(apiStatus.loading);
     try {
@@ -33,6 +38,7 @@ class User {
       this.setErrorMessage('something went wrong..');
     }
   }
+
   @action.bound setApiStatus(status) {
     this.apiStatus = status;
   }

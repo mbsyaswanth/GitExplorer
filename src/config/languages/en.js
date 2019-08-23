@@ -1,11 +1,7 @@
 export default {
-  repo_List: 'Repo List',
-  repo_Name: 'Repo Name',
   stars: 'Stars',
   forks: 'Forks',
-  git_Explorer: 'Git Explorer',
-  user_List: 'User List',
-  user: 'User',
   git_Users: 'Git Users',
   repositories: 'Repositories',
+  no_repos_msg: 'No repos found',
 };

@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import {ActivityIndicator, FlatList, Text} from 'react-native';
-import User from './User';
-import {Container, Language} from './styledComponents';
-import {apiStatus as ApiStatus} from '../../../constants/ApiStatus';
 import {observer} from 'mobx-react';
 import {Actions} from 'react-native-router-flux';
+
+import User from './User';
+import {Container, Center} from './styledComponents';
+
+import {apiStatus as ApiStatus} from '../../../constants/ApiStatus';
 import translate from '../../../utils/language.utils';
 
 @observer
@@ -33,22 +35,29 @@ class UserList extends Component {
     const {users} = this.props.store;
     return (
       <FlatList
-        data={this.props.store.users}
+        keyExtractor={item => item.userName}
+        data={users}
         renderItem={({item}) => <User user={item} />}
       />
     );
   };
 
   renderLoading = () => {
-    return <ActivityIndicator size="large" color="#0000ff" />;
+    return (
+      <Center>
+        <ActivityIndicator size="large" color="#0000ff" />
+      </Center>
+    );
   };
 
   renderError = () => {
     const {errorMessage, apiStatus} = this.props.store;
     if (apiStatus === ApiStatus.error) {
-      return <Text>{errorMessage}</Text>;
-    } else {
-      return null;
+      return (
+        <Center>
+          <Text>{errorMessage}</Text>
+        </Center>
+      );
     }
   };
 

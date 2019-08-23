@@ -1,14 +1,18 @@
 import React, {Component} from 'react';
-
-import {Language} from './styledComponents';
 import {observer} from 'mobx-react';
 import {Actions} from 'react-native-router-flux';
+
+import {Language} from './styledComponents';
+
 import translate from '../../../utils/language.utils';
 
 @observer
 class LanguageSelect extends Component {
-  render() {
+  componentDidUpdate() {
     Actions.refresh({key: 'users', title: translate('git_Users')});
+  }
+
+  render() {
     const {selectedLanguageName, setLanguageName} = this.props.store;
     return (
       <Language
