@@ -22,15 +22,6 @@ class UserList extends Component {
     Actions.refresh({key: 'users', title: translate('git_Users')});
   }
 
-  isLoading = () => {
-    const {apiStatus} = this.props.store;
-    if (apiStatus === ApiStatus.loading) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
   renderUsers = () => {
     const {users} = this.props.store;
     return (
@@ -51,23 +42,30 @@ class UserList extends Component {
   };
 
   renderError = () => {
-    const {errorMessage, apiStatus} = this.props.store;
-    if (apiStatus === ApiStatus.error) {
-      return (
-        <Center>
-          <Text>{errorMessage}</Text>
-        </Center>
-      );
-    }
+    const {errorMessage} = this.props.store;
+
+    return (
+      <Center>
+        <Text>{errorMessage}</Text>
+      </Center>
+    );
   };
 
   render() {
-    return (
-      <Container>
-        {this.renderError()}
-        {this.isLoading() ? this.renderLoading() : this.renderUsers()}
-      </Container>
-    );
+    const {apiStatus} = this.props.store;
+    switch (apiStatus) {
+      case ApiStatus.loading:
+        return this.renderLoading();
+
+      case ApiStatus.error:
+        return this.renderError();
+
+      case ApiStatus.completed:
+        return this.renderUsers();
+
+      default:
+        return null;
+    }
   }
 }
 

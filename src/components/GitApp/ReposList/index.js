@@ -25,15 +25,6 @@ class ReposList extends Component {
     return false;
   };
 
-  isLoading = () => {
-    const {apiStatus} = this.props.user;
-    if (apiStatus === ApiStatus.loading) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
   renderLoading = () => {
     return (
       <Center>
@@ -43,18 +34,19 @@ class ReposList extends Component {
   };
 
   renderEmpty = () => {
-    const {apiStatus} = this.props.user;
-    if (apiStatus === ApiStatus.completed) {
-      return (
-        <Center>
-          <Text> {translate('no_repos_msg')} </Text>
-        </Center>
-      );
-    }
+    return (
+      <Center>
+        <Text> {translate('no_repos_msg')} </Text>
+      </Center>
+    );
   };
 
   renderRepos = () => {
     const {repos} = this.props.user;
+
+    if (this.isReposEmpty()) {
+      return this.renderEmpty();
+    }
     return (
       <FlatList
         keyExtractor={item => item.repoName}
@@ -65,24 +57,30 @@ class ReposList extends Component {
   };
 
   renderError = () => {
-    const {apiStatus, errorMessage} = this.props.user;
-    if (apiStatus === ApiStatus.error) {
-      return (
-        <Center>
-          <Text>{errorMessage}</Text>
-        </Center>
-      );
-    }
+    const {errorMessage} = this.props.user;
+
+    return (
+      <Center>
+        <Text>{errorMessage}</Text>
+      </Center>
+    );
   };
 
   render() {
-    return (
-      <>
-        {this.renderEmpty()}
-        {this.renderError()}
-        {this.isLoading() ? this.renderLoading() : this.renderRepos()}
-      </>
-    );
+    const {apiStatus} = this.props.user;
+    switch (apiStatus) {
+      case ApiStatus.loading:
+        return this.renderLoading();
+
+      case ApiStatus.error:
+        return this.renderError();
+
+      case ApiStatus.completed:
+        return this.renderRepos();
+
+      default:
+        return null;
+    }
   }
 }
 

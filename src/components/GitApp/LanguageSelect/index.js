@@ -5,11 +5,12 @@ import {Actions} from 'react-native-router-flux';
 import {Language} from './styledComponents';
 
 import translate from '../../../utils/language.utils';
+import {refreshUserScene} from '../../../utils/navigation';
 
 @observer
 class LanguageSelect extends Component {
   componentDidUpdate() {
-    Actions.refresh({key: 'users', title: translate('git_Users')});
+    refreshUserScene();
   }
 
   render() {

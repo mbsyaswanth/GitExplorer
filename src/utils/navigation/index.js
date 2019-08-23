@@ -14,3 +14,7 @@ export const goToRepos = user => {
 export const goToUsers = () => {
   Actions.users({type: ActionConst.REPLACE, title: translate('git_Users')});
 };
+
+export const refreshUserScene = () => {
+  Actions.refresh({key: 'users', title: translate('git_Users')});
+};
