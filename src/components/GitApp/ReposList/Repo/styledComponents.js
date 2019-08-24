@@ -10,6 +10,8 @@ export const RepoContainer = styled.View`
 
 export const RepoText = styled.Text`
   padding-left: 5px;
+  flex-direction: row;
+  justify-content: flex-start;
 `;
 
 export const RepoName = styled.Text`
@@ -30,6 +32,7 @@ export const RepoInfoBtn = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+  width: 100;
 `;
 
 export const IconImage = styled(Image)`

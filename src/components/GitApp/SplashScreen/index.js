@@ -15,7 +15,7 @@ class SplashScreen extends Component {
   render() {
     return (
       <Container>
-        <Logo> {translate('git_Explorer')} </Logo>
+        <Logo> Git Explorer </Logo>
       </Container>
     );
   }
