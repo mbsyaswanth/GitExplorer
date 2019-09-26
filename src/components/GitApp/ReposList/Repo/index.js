@@ -21,7 +21,7 @@ class Repo extends Component {
         <RepoName>{repoName}</RepoName>
         <RepoInfoContainer>
           <RepoInfoBtn>
-            <IconImage source={require('../../../../assets/images/star.png')} />
+            <IconImage source={require('../../../../assets/images/star.jpg')} />
             <RepoText>
               {translate('stars')} : {stars}
             </RepoText>
